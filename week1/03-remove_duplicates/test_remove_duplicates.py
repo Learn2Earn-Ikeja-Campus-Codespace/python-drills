@@ -33,7 +33,7 @@ for expected, nums in tests:
         failures += 1
         print(f"FAIL: remove_duplicates({original}) mutated its input\n")
 
-if uses_set(remove_duplicates, "set"):
+if uses_set(remove_duplicates):
     failures += 1
     print("FAIL: set() is not allowed in this problem\n")
 
