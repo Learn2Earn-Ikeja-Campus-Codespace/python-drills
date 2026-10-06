@@ -1,4 +1,13 @@
+import ast
+import inspect
 from remove_duplicates import remove_duplicates
+
+def uses_set(fn):
+    tree = ast.parse(inspect.getsource(fn))
+    return any(
+        (isinstance(node, ast.Name) and node.id == "set") or isinstance(node, ast.SetComp)
+        for node in ast.walk(tree)
+    )
 
 tests = [
     ([1, 2, 3, 4], [1, 2, 2, 3, 4, 4]),   # example from the problem
@@ -23,5 +32,9 @@ for expected, nums in tests:
     elif nums != original:
         failures += 1
         print(f"FAIL: remove_duplicates({original}) mutated its input\n")
+
+if uses_set(remove_duplicates, "set"):
+    failures += 1
+    print("FAIL: set() is not allowed in this problem\n")
 
 print("BIM!!!" if failures == 0 else f"{failures} failed")
