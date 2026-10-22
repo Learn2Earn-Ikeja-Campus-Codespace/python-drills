@@ -1,31 +1,40 @@
 def has_min_length(password):
-    # Write your code here
-    pass
+    if  len(password) >= 8:
+    
 
 
 def has_uppercase(password):
-    # Write your code here
-    pass
+    if password.isupper():
+    
 
 
 def has_lowercase(password):
-    # Write your code here
-    pass
+    if password.islower():
+    
 
 
 def has_digit(password):
-    # Write your code here
-    pass
+    is password.isdigit():
+    
 
 
 def has_special(password):
-    # Write your code here
-    pass
+    for char in password:
+        if  not char.isalnum():
+            return False
+    return True
+    
 
 
 def is_valid_password(password):
-    # Write your code here
-    pass
+    if has_min_length(password) and
+    has_uppercase(password) and
+    has_lowercase(password) and
+    has_digit(password) and
+    has_special(password):
+        return True
+    return False
+
 
 
 # bonus
